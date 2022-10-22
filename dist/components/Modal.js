@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _reactRedux = require("react-redux");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -15,23 +14,14 @@ const Modal = _ref => {
   let {
     showModal,
     setShowModal,
-    modalContentText,
     modalBackgroundColor,
     modalContentColor,
     modalBorder,
     modalFontSize,
+    modalDynamicTextContentFirstName,
+    modalDynamicTextContentLastName,
     style
   } = _ref;
-  // Get last employee added from Redux
-  const employeesList = (0, _reactRedux.useSelector)(state => state.employees.employees);
-  const employeesListLastAdded = employeesList => {
-    const lastAdded = employeesList[employeesList.length - 1];
-    return lastAdded;
-  };
-  const lastAddedFirst = employeesListLastAdded(employeesList).firstName;
-  const lastAddedLast = employeesListLastAdded(employeesList).lastName;
-  console.log(lastAddedFirst);
-  console.log(lastAddedLast);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, showModal ? /*#__PURE__*/_react.default.createElement("div", {
     className: "background",
     style: _objectSpread({
@@ -70,15 +60,14 @@ const Modal = _ref => {
     style: {
       color: "#FCDE9C"
     }
-  }, lastAddedFirst), " ", /*#__PURE__*/_react.default.createElement("span", {
+  }, modalDynamicTextContentFirstName), " ", /*#__PURE__*/_react.default.createElement("span", {
     style: {
       color: "#FCDE9C"
     }
-  }, lastAddedLast), " added")), /*#__PURE__*/_react.default.createElement("div", {
+  }, modalDynamicTextContentLastName), " ", "added")), /*#__PURE__*/_react.default.createElement("div", {
     className: "close-modal-button",
     "aria-label": "Close modal",
-    onClick: () => setShowModal(prev => !prev) /// toggle modal
-    ,
+    onClick: () => setShowModal(prev => !prev),
     style: {
       color: modalContentColor,
       fontSize: "1.5rem",
@@ -95,17 +84,15 @@ const Modal = _ref => {
     onMouseOut: e => (e.target.style.background = "transparent") && (e.target.style.color = "white")
   }, "Close"))) : null);
 };
-
-// PropTypes for Modal
 Modal.propTypes = {
   showModal: _propTypes.default.bool.isRequired,
   setShowModal: _propTypes.default.func.isRequired,
-  //
   modalBackgroundColor: _propTypes.default.string,
   modalContentColor: _propTypes.default.string,
   modalBorder: _propTypes.default.string,
-  modalFontSize: _propTypes.default.string
-  // content: PropTypes.string.isRequired,
+  modalFontSize: _propTypes.default.string,
+  modalDynamicTextContentFirstName: _propTypes.default.string,
+  modalDynamicTextContentLastName: _propTypes.default.string
 };
 var _default = Modal;
 exports.default = _default;
