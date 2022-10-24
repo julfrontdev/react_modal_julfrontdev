@@ -18,8 +18,10 @@ const Modal = _ref => {
     modalContentColor,
     modalBorder,
     modalFontSize,
-    modalDynamicTextContentFirstName,
-    modalDynamicTextContentLastName,
+    modalStaticTextContentFirstPart,
+    modalDynamicTextContentFirstPart,
+    modalDynamicTextContentLastPart,
+    modalStaticTextContentLastPart,
     style
   } = _ref;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, showModal ? /*#__PURE__*/_react.default.createElement("div", {
@@ -56,15 +58,15 @@ const Modal = _ref => {
       color: modalContentColor,
       fontSize: modalFontSize
     }
-  }, "Employee", " ", /*#__PURE__*/_react.default.createElement("span", {
+  }, modalStaticTextContentFirstPart, " ", /*#__PURE__*/_react.default.createElement("span", {
     style: {
       color: "#FCDE9C"
     }
-  }, modalDynamicTextContentFirstName), " ", /*#__PURE__*/_react.default.createElement("span", {
+  }, modalDynamicTextContentFirstPart), " ", /*#__PURE__*/_react.default.createElement("span", {
     style: {
       color: "#FCDE9C"
     }
-  }, modalDynamicTextContentLastName), " ", "added")), /*#__PURE__*/_react.default.createElement("div", {
+  }, modalDynamicTextContentLastPart), " ", modalStaticTextContentLastPart)), /*#__PURE__*/_react.default.createElement("div", {
     className: "close-modal-button",
     "aria-label": "Close modal",
     onClick: () => setShowModal(prev => !prev),
@@ -91,8 +93,10 @@ Modal.propTypes = {
   modalContentColor: _propTypes.default.string,
   modalBorder: _propTypes.default.string,
   modalFontSize: _propTypes.default.string,
-  modalDynamicTextContentFirstName: _propTypes.default.string,
-  modalDynamicTextContentLastName: _propTypes.default.string
+  modalStaticTextContentFirstPart: _propTypes.default.string,
+  modalDynamicTextContentFirstPart: _propTypes.default.string,
+  modalDynamicTextContentLastPart: _propTypes.default.string,
+  modalStaticTextContentLastPart: _propTypes.default.string
 };
 var _default = Modal;
 exports.default = _default;

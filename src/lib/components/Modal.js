@@ -8,8 +8,10 @@ const Modal = ({
   modalContentColor,
   modalBorder,
   modalFontSize,
-  modalDynamicTextContentFirstName,
-  modalDynamicTextContentLastName,
+  modalStaticTextContentFirstPart,
+  modalDynamicTextContentFirstPart,
+  modalDynamicTextContentLastPart,
+  modalStaticTextContentLastPart,
   style,
 }) => {
   return (
@@ -47,14 +49,14 @@ const Modal = ({
           >
             <div className="modal-content">
               <p style={{ color: modalContentColor, fontSize: modalFontSize }}>
-                Employee{" "}
+                {modalStaticTextContentFirstPart}{" "}
                 <span style={{ color: "#FCDE9C" }}>
-                  {modalDynamicTextContentFirstName}
+                  {modalDynamicTextContentFirstPart}
                 </span>{" "}
                 <span style={{ color: "#FCDE9C" }}>
-                  {modalDynamicTextContentLastName}
+                  {modalDynamicTextContentLastPart}
                 </span>{" "}
-                added
+                {modalStaticTextContentLastPart}
               </p>
             </div>
             <div
@@ -98,8 +100,10 @@ Modal.propTypes = {
   modalContentColor: PropTypes.string,
   modalBorder: PropTypes.string,
   modalFontSize: PropTypes.string,
-  modalDynamicTextContentFirstName: PropTypes.string,
-  modalDynamicTextContentLastName: PropTypes.string,
+  modalStaticTextContentFirstPart: PropTypes.string,
+  modalDynamicTextContentFirstPart: PropTypes.string,
+  modalDynamicTextContentLastPart: PropTypes.string,
+  modalStaticTextContentLastPart: PropTypes.string,
 };
 
 export default Modal;
