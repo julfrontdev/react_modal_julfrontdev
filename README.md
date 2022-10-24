@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# react_modal_julfrontdev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Modal is made for [React](https://reactjs.org).
 
-## Available Scripts
+Features include:
 
-In the project directory, you can run:
+- modal,
+- style with props,
+- static or dynamic name of the employee.
 
-### `npm start`
+# Installation and usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The easiest way to use react-select is to install it from npm and build it into your app with Webpack.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+yarn add react_modal_julfrontdev
+```
 
-### `npm test`
+or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install react_modal_julfrontdev
+```
 
-### `npm run build`
+Then use it in your app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### With React Component
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+import React from "react";
+import Select from "react-select";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
-### `npm run eject`
+class App extends React.Component {
+  state = {
+    selectedOption: null,
+  };
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption }, () =>
+      console.log(`Option selected:`, this.state.selectedOption)
+    );
+  };
+  render() {
+    const { selectedOption } = this.state;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    return (
+      <Select
+        value={selectedOption}
+        onChange={this.handleChange}
+        options={options}
+      />
+    );
+  }
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### With React Hooks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```js
+import React, { useState } from "react";
+import Select from "react-select";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
-## Learn More
+export default function App() {
+  const [selectedOption, setSelectedOption] = useState(null);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return (
+    <div className="App">
+      <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        options={options}
+      />
+    </div>
+  );
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Props
 
-### Code Splitting
+Common props you may want to specify include:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `autoFocus` - focus the control when it mounts
+- `className` - apply a className to the control
+- `classNamePrefix` - apply classNames to inner elements with the given prefix
+- `isDisabled` - disable the control
+- `isMulti` - allow the user to select multiple values
+- `isSearchable` - allow the user to search for matching options
+- `name` - generate an HTML input with this name, containing the current value
+- `onChange` - subscribe to change events
+- `options` - specify the options the user can select from
+- `placeholder` - change the text displayed when no option is selected
+- `noOptionsMessage` - ({ inputValue: string }) => string | null - Text to display when there are no options
+- `value` - control the current value
 
-### Analyzing the Bundle Size
+See the [props documentation](https://www.react-select.com/props) for complete documentation on the props react-select supports.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Controllable Props
 
-### Making a Progressive Web App
+You can control the following props by providing values for them. If you don't, react-select will manage them for you.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `value` / `onChange` - specify the current value of the control
+- `menuIsOpen` / `onMenuOpen` / `onMenuClose` - control whether the menu is open
+- `inputValue` / `onInputChange` - control the value of the search input (changing this will update the available options)
 
-### Advanced Configuration
+If you don't provide these props, you can set the initial value of the state they control:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `defaultValue` - set the initial value of the control
+- `defaultMenuIsOpen` - set the initial open value of the menu
+- `defaultInputValue` - set the initial value of the search input
 
-### Deployment
+## Methods
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+React-select exposes two public methods:
 
-### `npm run build` fails to minify
+- `focus()` - focus the control programmatically
+- `blur()` - blur the control programmatically
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Customisation
+
+Check the docs for more information on:
+
+- [Customising the styles](https://www.react-select.com/styles)
+- [Using custom components](https://www.react-select.com/components)
+- [Using the built-in animated components](https://www.react-select.com/home#animated-components)
+- [Creating an async select](https://www.react-select.com/async)
+- [Allowing users to create new options](https://www.react-select.com/creatable)
+- [Advanced use-cases](https://www.react-select.com/advanced)
+- [TypeScript guide](https://www.react-select.com/typescript)
+
+## TypeScript
+
+The v5 release represents a rewrite from JavaScript to TypeScript. The types for v4 and earlier releases are available at [@types](https://www.npmjs.com/package/@types/react-select). See the [TypeScript guide](https://www.react-select.com/typescript) for how to use the types starting with v5.
+
+# Thanks
+
+Thank you to everyone who has contributed to this project. It's been a wild ride.
+
+If you like React Select, you should [follow me on Twitter](https://twitter.com/jedwatson)!
+
+Shout out to [Joss Mackison](https://github.com/jossmac), [Charles Lee](https://github.com/gwyneplaine), [Ben Conolly](https://github.com/Noviny), [Tom Walker](https://github.com/bladey), [Nathan Bierema](https://github.com/Methuselah96), [Eric Bonow](https://github.com/ebonow), [Mitchell Hamilton](https://github.com/mitchellhamilton), [Dave Brotherstone](https://github.com/bruderstein), [Brian Vaughn](https://github.com/bvaughn), and the [Atlassian Design System](https://atlassian.design) team who along with many other contributors have made this possible ❤️
+
+## License
+
+MIT Licensed. Copyright (c) Jed Watson 2021.
