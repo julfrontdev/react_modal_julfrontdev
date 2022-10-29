@@ -44,6 +44,7 @@ export default function App() {
         showModal={showModal}
         setShowModal={setShowModal}
         modalBackgroundColor="#544343"
+        modalCloseButton="Close"
         modalContentColor="white"
         modalBorder="0px"
         modalFontSize="1.8rem"
@@ -62,8 +63,9 @@ export default function App() {
 Props you may want to specify include:
 
 - `setShowModal`- callback function to show or hide modal,
-- `modalBackgroundColor` - to change modal background color,
-- `modalContentColor` - to change modal content color,
+- `modalBackgroundColor` - to set modal background color,
+- `modalCloseButton`- to set close button text content,
+- `modalContentColor` - to set modal content color,
 - `modalBorder` - to change modal border,
 - `modalFontSize` - to change modal font size,
 - `modalStaticTextContentFirstPart` - to change modal first part static text content,
