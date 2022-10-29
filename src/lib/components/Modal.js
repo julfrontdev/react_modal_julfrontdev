@@ -5,6 +5,7 @@ const Modal = ({
   showModal,
   setShowModal,
   modalBackgroundColor,
+  modalCloseButton,
   modalContentColor,
   modalBorder,
   modalFontSize,
@@ -84,7 +85,7 @@ const Modal = ({
                 (e.target.style.color = "white")
               }
             >
-              Close
+              {modalCloseButton}
             </div>
           </div>
         </div>
@@ -96,8 +97,9 @@ const Modal = ({
 Modal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
-  modalBackgroundColor: PropTypes.string,
-  modalContentColor: PropTypes.string,
+  modalBackgroundColor: PropTypes.string.isRequired,
+  modalCloseButton: PropTypes.string.isRequired,
+  modalContentColor: PropTypes.string.isRequired,
   modalBorder: PropTypes.string,
   modalFontSize: PropTypes.string,
   modalStaticTextContentFirstPart: PropTypes.string,

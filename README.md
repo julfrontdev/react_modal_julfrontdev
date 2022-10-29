@@ -61,7 +61,7 @@ export default function App() {
 
 Props you may want to specify include:
 
-- `setShowModal`- to show or hide modal,
+- `setShowModal`- callback function to show or hide modal,
 - `modalBackgroundColor` - to change modal background color,
 - `modalContentColor` - to change modal content color,
 - `modalBorder` - to change modal border,

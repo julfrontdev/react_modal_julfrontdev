@@ -15,6 +15,7 @@ const Modal = _ref => {
     showModal,
     setShowModal,
     modalBackgroundColor,
+    modalCloseButton,
     modalContentColor,
     modalBorder,
     modalFontSize,
@@ -84,13 +85,14 @@ const Modal = _ref => {
     },
     onMouseOver: e => (e.target.style.background = "white") && (e.target.style.color = "#8D6A9F"),
     onMouseOut: e => (e.target.style.background = "transparent") && (e.target.style.color = "white")
-  }, "Close"))) : null);
+  }, modalCloseButton))) : null);
 };
 Modal.propTypes = {
   showModal: _propTypes.default.bool.isRequired,
   setShowModal: _propTypes.default.func.isRequired,
-  modalBackgroundColor: _propTypes.default.string,
-  modalContentColor: _propTypes.default.string,
+  modalBackgroundColor: _propTypes.default.string.isRequired,
+  modalCloseButton: _propTypes.default.string.isRequired,
+  modalContentColor: _propTypes.default.string.isRequired,
   modalBorder: _propTypes.default.string,
   modalFontSize: _propTypes.default.string,
   modalStaticTextContentFirstPart: _propTypes.default.string,
